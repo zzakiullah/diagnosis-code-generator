@@ -1,1 +1,1 @@
-# diagnosis-code-generator
+# Diagnosis Code Generator
