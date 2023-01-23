@@ -11,7 +11,9 @@ class Window extends JFrame implements ActionListener, KeyListener {
 
     Timer timer;
 
-    HomeScreen homeScreen;
+    MenuBar menuBar;
+
+    TitleScreen titleScreen;
     MenuScreen menuScreen;
     MainScreen mainScreen;
 
@@ -27,18 +29,21 @@ class Window extends JFrame implements ActionListener, KeyListener {
 
         setSize(width, height);
 
-        homeScreen = new HomeScreen();
+        menuBar = new MenuBar();
+        this.setJMenuBar(menuBar);
+
+        titleScreen = new TitleScreen(this, width, height);
         menuScreen = new MenuScreen();
         mainScreen = new MainScreen();
 
         cLayout = new CardLayout();
         cards = new JPanel(cLayout);
-        cards.add(homeScreen, "home");
+        cards.add(titleScreen, "title");
         cards.add(menuScreen, "menu");
         cards.add(mainScreen, "main");
         add(cards);
 
-        cLayout.show(cards, "home");
+        cLayout.show(cards, "title");
 
         timer = new Timer(10, this);
         timer.start();
